@@ -94,7 +94,17 @@
                     </select>
                 </div>
 
-                <!-- Hill Performance Filter -->
+                <!-- Seating Capacity -->
+                <div>
+                    <label class="block text-sm font-semibold text-slate-300 mb-2">Minimum Seating Capacity</label>
+                    <select id="seating" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
+                        <option value="0">Any Seating</option>
+                        <option value="5">5 Seater</option>
+                        <option value="6">6 or 7 Seater</option>
+                    </select>
+                </div>
+
+                <!-- Capability Filters -->
                 <div class="bg-indigo-950/30 border border-indigo-800/40 p-3.5 rounded-xl space-y-3">
                     <label class="flex items-start space-x-3 cursor-pointer">
                         <input type="checkbox" id="hillPerformance" onchange="findCars()" class="accent-indigo-500 rounded mt-0.5">
@@ -241,8 +251,12 @@
             const transmission = document.getElementById('transmission').value;
             const minSeating = parseInt(document.getElementById('seating').value);
             const sortBy = document.getElementById('sortBy').value;
-            const requireHillPower = document.getElementById('hillPerformance').checked;
-            const requireEasyParts = document.getElementById('easyParts').checked;
+            
+            // Safely fetch checkbox values
+            const hillElem = document.getElementById('hillPerformance');
+            const partsElem = document.getElementById('easyParts');
+            const requireHillPower = hillElem ? hillElem.checked : false;
+            const requireEasyParts = partsElem ? partsElem.checked : false;
 
             const selectedFeatures = Array.from(document.querySelectorAll('input[name="feature"]:checked')).map(cb => cb.value);
 
