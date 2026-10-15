@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarLelo - India Car Finder & Matcher</title>
+    <title>CarLelo - India Car Recommendation Engine</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="bg-indigo-600 text-white font-extrabold text-xl px-3 py-1.5 rounded-xl shadow-lg shadow-indigo-600/30">CL</div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700 font-medium">
-                🇮🇳 60+ Indian Models Available
+                🇮🇳 Updated 2026 Prices & Specs
             </div>
         </div>
     </header>
@@ -32,7 +32,7 @@
     <!-- Main Container -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Left Column: Preference Form -->
+        <!-- Left Column: Requirement Filters -->
         <section class="lg:col-span-5 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl backdrop-blur-sm self-start sticky top-24">
             <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-800">
                 <h2 class="text-lg font-bold text-slate-200 flex items-center gap-2">
@@ -50,7 +50,7 @@
                         <label class="text-sm font-semibold text-slate-300">Max Budget</label>
                         <span id="budgetValue" class="text-indigo-400 font-bold text-sm bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-800/50">₹ 25 Lakhs</span>
                     </div>
-                    <input type="range" id="budget" min="3" max="100" step="1" value="25" oninput="updateBudgetLabel(this.value)" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                    <input type="range" id="budget" min="3" max="100" step="0.5" value="25" oninput="updateBudgetLabel(this.value)" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
                     <div class="flex justify-between text-[10px] text-slate-500 mt-1">
                         <span>₹3 Lakhs</span>
                         <span>₹50 Lakhs</span>
@@ -61,8 +61,8 @@
                 <!-- Body Type -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Preferred Body Type</label>
-                    <select id="bodyType" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
-                        <option value="All">Any / Doesn't Matter</option>
+                    <select id="bodyType" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
+                        <option value="All">Any Body Type</option>
                         <option value="Hatchback">Hatchback</option>
                         <option value="Compact SUV">Compact SUV</option>
                         <option value="SUV">Full SUV</option>
@@ -74,7 +74,7 @@
                 <!-- Fuel Type -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Fuel / Power Type</label>
-                    <select id="fuelType" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
+                    <select id="fuelType" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
                         <option value="All">Any Fuel Type</option>
                         <option value="Petrol">Petrol</option>
                         <option value="Diesel">Diesel</option>
@@ -87,9 +87,9 @@
                 <!-- Transmission -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Transmission</label>
-                    <select id="transmission" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
+                    <select id="transmission" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
                         <option value="All">Any Transmission</option>
-                        <option value="Automatic">Automatic (AMT/DCT/AT/CVT)</option>
+                        <option value="Automatic">Automatic</option>
                         <option value="Manual">Manual</option>
                     </select>
                 </div>
@@ -97,7 +97,7 @@
                 <!-- Seating Capacity -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Minimum Seating Capacity</label>
-                    <select id="seating" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
+                    <select id="seating" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
                         <option value="0">Any Seating</option>
                         <option value="5">5 Seater</option>
                         <option value="6">6 or 7 Seater</option>
@@ -109,42 +109,39 @@
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Must-Have Features</label>
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Sunroof" class="accent-indigo-500 rounded">
+                            <input type="checkbox" name="feature" value="Sunroof" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Sunroof</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="ADAS" class="accent-indigo-500 rounded">
+                            <input type="checkbox" name="feature" value="ADAS" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">ADAS Safety</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Ventilated Seats" class="accent-indigo-500 rounded">
+                            <input type="checkbox" name="feature" value="Ventilated Seats" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Ventilated Seats</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="360 Camera" class="accent-indigo-500 rounded">
+                            <input type="checkbox" name="feature" value="360 Camera" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">360° Camera</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Connected Car" class="accent-indigo-500 rounded">
+                            <input type="checkbox" name="feature" value="Connected Tech" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Connected Tech</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Cruise Control" class="accent-indigo-500 rounded">
+                            <input type="checkbox" name="feature" value="Cruise Control" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Cruise Control</span>
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-indigo-600/20 transition transform active:scale-[0.99]">
-                    Find Matching Cars
-                </button>
             </form>
         </section>
 
         <!-- Right Column: Recommendation Results -->
         <section class="lg:col-span-7 flex flex-col space-y-4">
             <div class="flex justify-between items-center bg-slate-900/60 border border-slate-800 px-6 py-4 rounded-2xl backdrop-blur-sm">
-                <div id="resultsCount" class="text-sm font-semibold text-slate-300">Showing all available cars</div>
+                <div id="resultsCount" class="text-sm font-semibold text-slate-300">Showing cars...</div>
                 <div class="flex items-center space-x-2">
                     <span class="text-xs text-slate-400">Sort by:</span>
                     <select id="sortBy" onchange="findCars()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none">
@@ -165,43 +162,51 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-800 py-6 mt-12 text-center text-xs text-slate-500">
-        CarLelo India • Built for the Indian Automotive Market
+        CarLelo India • Accurate 2026 Ex-Showroom Market Database
     </footer>
 
     <!-- JavaScript Data and Logic -->
     <script>
         const carDatabase = [
-            { name: "Maruti Alto K10", brand: "Maruti", price: 3.99, maxPrice: 5.96, body: "Hatchback", fuel: "Petrol", transmission: "Manual", seats: 5, mileage: "24.3 kmpl", safety: "2-Star", features: ["Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
-            { name: "Renault Kwid", brand: "Renault", price: 4.70, maxPrice: 6.45, body: "Hatchback", fuel: "Petrol", transmission: "Manual", seats: 5, mileage: "22.3 kmpl", safety: "1-Star", features: [], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Maruti Wagon R", brand: "Maruti", price: 5.54, maxPrice: 7.35, body: "Hatchback", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "25.1 kmpl", safety: "1-Star", features: [], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
-            { name: "Tata Tiago", brand: "Tata", price: 5.60, maxPrice: 8.90, body: "Hatchback", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "20.0 kmpl", safety: "4-Star", features: ["Connected Car"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
-            { name: "Maruti Swift", brand: "Maruti", price: 6.49, maxPrice: 9.64, body: "Hatchback", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "24.8 kmpl", safety: "3-Star", features: ["Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Hyundai Grand i10 Nios", brand: "Hyundai", price: 5.92, maxPrice: 8.56, body: "Hatchback", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "20.7 kmpl", safety: "2-Star", features: [], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
-            { name: "Tata Punch", brand: "Tata", price: 6.13, maxPrice: 10.20, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "20.0 kmpl", safety: "5-Star", features: ["Sunroof", "Connected Car"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
-            { name: "Maruti Baleno", brand: "Maruti", price: 6.66, maxPrice: 9.88, body: "Hatchback", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "22.9 kmpl", safety: "3-Star", features: ["360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Hyundai Exter", brand: "Hyundai", price: 6.13, maxPrice: 10.28, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "19.4 kmpl", safety: "3-Star", features: ["Sunroof", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
-            { name: "Citroen C3", brand: "Citroen", price: 6.16, maxPrice: 10.00, body: "Compact SUV", fuel: "Petrol", transmission: "Manual", seats: 5, mileage: "19.3 kmpl", safety: "3-Star", features: [], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
-            { name: "Maruti Brezza", brand: "Maruti", price: 8.34, maxPrice: 14.14, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "20.1 kmpl", safety: "4-Star", features: ["Sunroof", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
-            { name: "Tata Nexon", brand: "Tata", price: 8.00, maxPrice: 15.80, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "17.4 kmpl", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Mahindra XUV 3XO", brand: "Mahindra", price: 7.79, maxPrice: 15.49, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "18.0 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Hyundai Venue", brand: "Hyundai", price: 7.94, maxPrice: 13.48, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "18.0 kmpl", safety: "3-Star", features: ["Sunroof", "Ventilated Seats", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
-            { name: "Kia Sonet", brand: "Kia", price: 7.99, maxPrice: 15.77, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "18.4 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
-            { name: "Maruti Fronx", brand: "Maruti", price: 7.51, maxPrice: 13.04, body: "Compact SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "21.5 kmpl", safety: "3-Star", features: ["360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
-            { name: "Hyundai Creta", brand: "Hyundai", price: 11.00, maxPrice: 20.30, body: "SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "17.4 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
-            { name: "Kia Seltos", brand: "Kia", price: 10.90, maxPrice: 20.35, body: "SUV", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "17.0 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Mahindra Scorpio-N", brand: "Mahindra", price: 13.85, maxPrice: 24.54, body: "SUV", fuel: "Diesel", transmission: "Automatic", seats: 7, mileage: "15.4 kmpl", safety: "5-Star", features: ["Sunroof", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Mahindra XUV700", brand: "Mahindra", price: 13.99, maxPrice: 26.54, body: "SUV", fuel: "Petrol", transmission: "Automatic", seats: 7, mileage: "15.0 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
-            { name: "Tata Harrier", brand: "Tata", price: 15.49, maxPrice: 25.85, body: "SUV", fuel: "Diesel", transmission: "Automatic", seats: 5, mileage: "16.8 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
-            { name: "Tata Safari", brand: "Tata", price: 16.19, maxPrice: 27.34, body: "SUV", fuel: "Diesel", transmission: "Automatic", seats: 7, mileage: "16.3 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
-            { name: "Toyota Fortuner", brand: "Toyota", price: 33.43, maxPrice: 51.44, body: "SUV", fuel: "Diesel", transmission: "Automatic", seats: 7, mileage: "10.0 kmpl", safety: "5-Star", features: ["Cruise Control", "Connected Car"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
-            { name: "Honda City", brand: "Honda", price: 12.00, maxPrice: 16.35, body: "Sedan", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "18.4 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Hyundai Verna", brand: "Hyundai", price: 11.00, maxPrice: 17.42, body: "Sedan", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "20.6 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
-            { name: "Volkswagen Virtus", brand: "Volkswagen", price: 11.56, maxPrice: 19.41, body: "Sedan", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "19.6 kmpl", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
-            { name: "Skoda Slavia", brand: "Skoda", price: 11.63, maxPrice: 19.13, body: "Sedan", fuel: "Petrol", transmission: "Automatic", seats: 5, mileage: "19.4 kmpl", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
-            { name: "Maruti Ertiga", brand: "Maruti", price: 8.69, maxPrice: 13.03, body: "MPV", fuel: "Petrol", transmission: "Automatic", seats: 7, mileage: "20.5 kmpl", safety: "3-Star", features: ["Connected Car"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
-            { name: "Toyota Innova Hycross", brand: "Toyota", price: 19.77, maxPrice: 30.98, body: "MPV", fuel: "Hybrid", transmission: "Automatic", seats: 7, mileage: "23.2 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
-            { name: "Tata Nexon EV", brand: "Tata", price: 12.49, maxPrice: 17.19, body: "Compact SUV", fuel: "EV", transmission: "Automatic", seats: 5, mileage: "465 km/charge", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "360 Camera", "Connected Car", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
-            { name: "MG Windsor EV", brand: "MG", price: 13.50, maxPrice: 15.50, body: "Compact SUV", fuel: "EV", transmission: "Automatic", seats: 5, mileage: "331 km/charge", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "360 Camera", "Connected Car"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" }
+            // Hatchbacks
+            { name: "Maruti Alto K10", brand: "Maruti", price: 3.99, maxPrice: 5.96, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "24.3 kmpl", safety: "2-Star", features: [], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
+            { name: "Maruti Wagon R", brand: "Maruti", price: 5.54, maxPrice: 7.35, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.1 kmpl", safety: "1-Star", features: [], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+            { name: "Tata Tiago", brand: "Tata", price: 5.60, maxPrice: 8.90, body: "Hatchback", fuel: ["Petrol", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.0 kmpl", safety: "4-Star", features: ["Connected Tech"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
+            { name: "Maruti Swift", brand: "Maruti", price: 5.84, maxPrice: 8.89, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.7 kmpl", safety: "3-Star", features: ["Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Hyundai Grand i10 Nios", brand: "Hyundai", price: 5.92, maxPrice: 8.56, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.7 kmpl", safety: "2-Star", features: ["Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
+            { name: "Tata Altroz", brand: "Tata", price: 6.60, maxPrice: 10.80, body: "Hatchback", fuel: ["Petrol", "Diesel", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "23.6 kmpl", safety: "5-Star", features: ["Sunroof", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
+            { name: "Maruti Baleno", brand: "Maruti", price: 6.66, maxPrice: 9.88, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "22.9 kmpl", safety: "3-Star", features: ["360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Hyundai i20", brand: "Hyundai", price: 7.04, maxPrice: 11.21, body: "Hatchback", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.3 kmpl", safety: "3-Star", features: ["Sunroof", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
+
+            // Compact SUVs
+            { name: "Tata Punch", brand: "Tata", price: 5.75, maxPrice: 10.77, body: "Compact SUV", fuel: ["Petrol", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.0 kmpl", safety: "5-Star", features: ["Sunroof", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+            { name: "Hyundai Exter", brand: "Hyundai", price: 6.13, maxPrice: 10.28, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.4 kmpl", safety: "3-Star", features: ["Sunroof", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
+            { name: "Maruti Fronx", brand: "Maruti", price: 6.90, maxPrice: 12.03, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "22.8 kmpl", safety: "3-Star", features: ["360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
+            { name: "Maruti Brezza", brand: "Maruti", price: 7.40, maxPrice: 13.71, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "21.0 kmpl", safety: "4-Star", features: ["Sunroof", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+            { name: "Tata Nexon", brand: "Tata", price: 7.40, maxPrice: 14.52, body: "Compact SUV", fuel: ["Petrol", "Diesel", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "24.0 kmpl", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Mahindra XUV 3XO", brand: "Mahindra", price: 7.79, maxPrice: 15.04, body: "Compact SUV", fuel: ["Petrol", "Diesel", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.6 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Hyundai Venue", brand: "Hyundai", price: 7.94, maxPrice: 13.48, body: "Compact SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.0 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
+            { name: "Kia Sonet", brand: "Kia", price: 7.99, maxPrice: 15.77, body: "Compact SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.4 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
+
+            // Mid & Full SUVs
+            { name: "Hyundai Creta", brand: "Hyundai", price: 10.99, maxPrice: 20.15, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.0 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+            { name: "Kia Seltos", brand: "Kia", price: 10.90, maxPrice: 20.35, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "17.0 kmpl", safety: "3-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Mahindra Scorpio-N", brand: "Mahindra", price: 13.69, maxPrice: 25.49, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "15.4 kmpl", safety: "5-Star", features: ["Sunroof", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Mahindra XUV700", brand: "Mahindra", price: 13.99, maxPrice: 26.54, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "15.0 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
+            { name: "Tata Harrier", brand: "Tata", price: 15.49, maxPrice: 25.85, body: "SUV", fuel: ["Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "16.8 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" },
+            { name: "Tata Safari", brand: "Tata", price: 16.19, maxPrice: 27.34, body: "SUV", fuel: ["Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "16.3 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
+            { name: "Toyota Fortuner", brand: "Toyota", price: 35.11, maxPrice: 50.97, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "10.0 kmpl", safety: "5-Star", features: ["Cruise Control", "Connected Tech"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+
+            // Sedans
+            { name: "Maruti Dzire", brand: "Maruti", price: 6.79, maxPrice: 9.39, body: "Sedan", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.7 kmpl", safety: "5-Star", features: ["Sunroof", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Honda City", brand: "Honda", price: 12.08, maxPrice: 16.35, body: "Sedan", fuel: ["Petrol", "Hybrid"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.4 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Hyundai Verna", brand: "Hyundai", price: 11.00, maxPrice: 17.42, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.6 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" },
+            { name: "Volkswagen Virtus", brand: "Volkswagen", price: 11.56, maxPrice: 19.41, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.6 kmpl", safety: "5-Star", features: ["Sunroof", "Ventilated Seats", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" },
+
+            // MPVs
+            { name: "Maruti Ertiga", brand: "Maruti", price: 8.69, maxPrice: 13.03, body: "MPV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "20.5 kmpl", safety: "3-Star", features: ["Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" },
+            { name: "Toyota Innova Crysta", brand: "Toyota", price: 19.99, maxPrice: 26.30, body: "MPV", fuel: ["Diesel"], transmission: ["Manual"], seats: 7, mileage: "12.0 kmpl", safety: "5-Star", features: ["Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" },
+            { name: "Toyota Innova Hycross", brand: "Toyota", price: 19.77, maxPrice: 30.98, body: "MPV", fuel: ["Petrol", "Hybrid"], transmission: ["Automatic"], seats: 7, mileage: "23.2 kmpl", safety: "5-Star", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Tech", "Cruise Control"], image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" }
         ];
 
         function updateBudgetLabel(val) {
@@ -226,50 +231,44 @@
 
             const selectedFeatures = Array.from(document.querySelectorAll('input[name="feature"]:checked')).map(cb => cb.value);
 
-            let scoredCars = carDatabase.map(car => {
-                let score = 0;
-                let maxPossibleScore = selectedFeatures.length + 4; // Weight factors
+            // STRICT FILTERING LOGIC
+            let filteredCars = carDatabase.filter(car => {
+                // 1. Strict Budget Filter
+                if (car.price > maxBudget) return false;
 
-                // 1. Budget filter & scoring
-                if (car.price <= maxBudget) {
-                    score += 2;
-                } else if (car.price <= maxBudget * 1.15) {
-                    score += 0.5; // Slightly over budget allowance
-                } else {
-                    return null; // Eliminate cars way over budget
-                }
+                // 2. Strict Body Type Filter
+                if (bodyType !== 'All' && car.body !== bodyType) return false;
 
-                // 2. Body Type match
-                if (bodyType === 'All' || car.body === bodyType) score += 1;
+                // 3. Strict Fuel Type Filter
+                if (fuelType !== 'All' && !car.fuel.includes(fuelType)) return false;
 
-                // 3. Fuel Type match
-                if (fuelType === 'All' || car.fuel === fuelType) score += 1;
+                // 4. Strict Transmission Filter
+                if (transmission !== 'All' && !car.transmission.includes(transmission)) return false;
 
-                // 4. Transmission match
-                if (transmission === 'All' || car.transmission === transmission) score += 1;
+                // 5. Strict Seating Filter
+                if (minSeating > 0 && car.seats < minSeating) return false;
 
-                // 5. Seating match
-                if (car.seats >= minSeating) score += 1;
+                return true;
+            });
 
-                // 6. Feature matching
+            // SCORE COMPUTATION FOR MATCH PERCENTAGE
+            let scoredCars = filteredCars.map(car => {
                 let matchedFeaturesCount = 0;
                 selectedFeatures.forEach(feat => {
-                    if (car.features.includes(feat)) {
-                        score += 1;
-                        matchedFeaturesCount++;
-                    }
+                    if (car.features.includes(feat)) matchedFeaturesCount++;
                 });
 
-                let matchPercentage = Math.round((score / Math.max(maxPossibleScore, 1)) * 100);
-                if (matchPercentage > 100) matchPercentage = 98;
-                if (matchPercentage < 40) matchPercentage = 45;
+                let matchPercentage = 100;
+                if (selectedFeatures.length > 0) {
+                    matchPercentage = Math.round(70 + (matchedFeaturesCount / selectedFeatures.length) * 30);
+                }
 
                 return { ...car, matchPercentage, matchedFeaturesCount };
-            }).filter(car => car !== null);
+            });
 
-            // Sorting
+            // SORTING LOGIC
             if (sortBy === 'match') {
-                scoredCars.sort((a, b) => b.matchPercentage - a.matchPercentage);
+                scoredCars.sort((a, b) => b.matchPercentage - a.matchPercentage || a.price - b.price);
             } else if (sortBy === 'price-asc') {
                 scoredCars.sort((a, b) => a.price - b.price);
             } else if (sortBy === 'price-desc') {
@@ -283,13 +282,13 @@
 
         function renderCars(cars) {
             const container = document.getElementById('carList');
-            document.getElementById('resultsCount').innerText = `Found ${cars.length} matching car(s)`;
+            document.getElementById('resultsCount').innerText = `Showing ${cars.length} matching car(s)`;
 
             if (cars.length === 0) {
                 container.innerHTML = `
                     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-10 text-center text-slate-400">
-                        <p class="text-base font-semibold mb-1">No cars found matching your exact filters.</p>
-                        <p class="text-xs">Try increasing your budget or relaxing your transmission/fuel filters.</p>
+                        <p class="text-base font-semibold mb-1">No cars found matching your selected filters.</p>
+                        <p class="text-xs">Try increasing your budget or changing your body/fuel filter selection.</p>
                     </div>`;
                 return;
             }
@@ -316,8 +315,8 @@
                             </div>
                             <div class="flex flex-wrap gap-2 mt-3 text-xs">
                                 <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.body}</span>
-                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.fuel}</span>
-                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.transmission}</span>
+                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.fuel.join(' / ')}</span>
+                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.transmission.join(' / ')}</span>
                                 <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.seats} Seater</span>
                                 <span class="bg-slate-800 text-cyan-400 px-2.5 py-1 rounded-lg border border-cyan-900/40">⛽ ${car.mileage}</span>
                                 <span class="bg-slate-800 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-900/40">🛡️ ${car.safety}</span>
