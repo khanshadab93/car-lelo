@@ -252,64 +252,70 @@
         }
 
         function findCars() {
-            const maxBudget = parseFloat(document.getElementById('budget').value);
+            if (!carDatabase || carDatabase.length === 0) return;
+
+            const sliderVal = parseFloat(document.getElementById('budget').value);
+            // Agar slider max (100) par hai, toh sabhi luxury/supercars (1 Crore+) allow karo
+            const maxBudget = sliderVal >= 100 ? 99999.0 : sliderVal;
+
             const bodyType = document.getElementById('bodyType').value;
             const fuelType = document.getElementById('fuelType').value;
             const transmission = document.getElementById('transmission').value;
-            const minSeating = parseInt(document.getElementById('seating').value);
-            const sortBy = document.getElementById('sortBy').value;
-            
-            const hillElem = document.getElementById('hillPerformance');
-            const partsElem = document.getElementById('easyParts');
-            const requireHillPower = hillElem ? hillElem.checked : false;
-            const requireEasyParts = partsElem ? partsElem.checked : false;
+            const minSeating = parseInt(document.getElementById('seating').value) || 0;
 
-            const selectedFeatures = Array.from(document.querySelectorAll('input[name="feature"]:checked')).map(cb => cb.value);
+            const hillCapability = document.getElementById('hillCapability').checked;
+            const easyParts = document.getElementById('easyParts').checked;
 
-            let filteredCars = carDatabase.filter(car => {
+            // Must-have features
+            const features = {
+                sunroof: document.getElementById('featSunroof').checked,
+                adas: document.getElementById('featAdas').checked,
+                ventilated: document.getElementById('featVentilated').checked,
+                camera360: document.getElementById('feat360').checked,
+                connected: document.getElementById('featConnected').checked,
+                cruise: document.getElementById('featCruise').checked
+            };
+
+            let filtered = carDatabase.filter(car => {
+                // Budget Check (Car ki starting price ya max price budget ke andar honi chahiye)
                 if (car.price > maxBudget) return false;
-                if (bodyType !== 'All' && car.body !== bodyType) return false;
-                if (fuelType !== 'All' && !car.fuel.includes(fuelType)) return false;
-                if (transmission !== 'All' && !car.transmission.includes(transmission)) return false;
-                if (minSeating > 0 && car.seats < minSeating) return false;
 
-                if (requireHillPower) {
-                    const ratio = car.cc / car.weight;
-                    if (ratio <= 1.2) return false;
+                // Body Type Check
+                if (bodyType && car.body !== bodyType) return false;
+
+                // Fuel Type Check
+                if (fuelType && !car.fuel.includes(fuelType)) return false;
+
+                // Transmission Check
+                if (transmission && !car.transmission.includes(transmission)) return false;
+
+                // Seating Check
+                if (minSeating && car.seats < minSeating) return false;
+
+                // Hill Capability Check (CC / Weight ratio logic)
+                if (hillCapability) {
+                    let ratio = car.weight > 0 ? (car.cc / car.weight) : 0;
+                    if (ratio < 1.2) return false;
                 }
 
-                if (requireEasyParts && car.parts !== "High / Easy") return false;
+                // Easy Parts Check
+                if (easyParts) {
+                    if (car.parts !== 'High / Easy') return false;
+                }
+
+                // Features Check
+                if (features.sunroof && !car.features.includes('Sunroof')) return false;
+                if (features.adas && !car.features.includes('ADAS')) return false;
+                if (features.ventilated && !car.features.includes('Ventilated Seats')) return false;
+                if (features.camera360 && !car.features.includes('360 Camera')) return false;
+                if (features.connected && !car.features.includes('Connected Tech')) return false;
+                if (features.cruise && !car.features.includes('Cruise Control')) return false;
 
                 return true;
             });
 
-            let scoredCars = filteredCars.map(car => {
-                let matchedFeaturesCount = 0;
-                selectedFeatures.forEach(feat => {
-                    if (car.features.includes(feat)) matchedFeaturesCount++;
-                });
-
-                let matchPercentage = 100;
-                if (selectedFeatures.length > 0) {
-                    matchPercentage = Math.round(70 + (matchedFeaturesCount / selectedFeatures.length) * 30);
-                }
-
-                const ratio = (car.cc / car.weight).toFixed(2);
-
-                return { ...car, matchPercentage, matchedFeaturesCount, ratio };
-            });
-
-            if (sortBy === 'match') {
-                scoredCars.sort((a, b) => b.matchPercentage - a.matchPercentage || a.price - b.price);
-            } else if (sortBy === 'price-asc') {
-                scoredCars.sort((a, b) => a.price - b.price);
-            } else if (sortBy === 'price-desc') {
-                scoredCars.sort((a, b) => b.price - a.price);
-            } else if (sortBy === 'mileage') {
-                scoredCars.sort((a, b) => parseFloat(b.mileage) - parseFloat(a.mileage));
-            }
-
-            renderCars(scoredCars);
+            // Render cars count & list cards...
+            renderCarResults(filtered);
         }
 
         function renderCars(cars) {
