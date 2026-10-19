@@ -217,21 +217,30 @@
         let carDatabase = [];
         
         async function loadCarData() {
-          try {
-            const response = await fetch('./cars.json');
-            if (!response.ok) {
-              throw new Error('Failed to load car dataset');
+            try {
+                // Dynamic path resolution for GitHub Pages subpaths
+                const basePath = window.location.hostname.includes('github.io') 
+                    ? window.location.pathname.replace(/\/[^\/]*$/, '/') 
+                    : './';
+                
+                let response = await fetch(basePath + 'cars.json');
+                if (!response.ok) {
+                    // Fallback to absolute root fetch if subpath fails
+                    response = await fetch('/cars.json');
+                }
+                if (!response.ok) {
+                    throw new Error('Failed to load car dataset');
+                }
+                carDatabase = await response.json();
+                findCars(); // Renders the cars once data is successfully fetched
+            } catch (error) {
+                console.error("Error loading cars.json:", error);
+                document.getElementById('carList').innerHTML = `
+                    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-10 text-center text-red-400">
+                        <p class="text-base font-semibold mb-1">Failed to load car data.</p>
+                        <p class="text-xs">Please ensure cars.json is uploaded in your repository root directory.</p>
+                    </div>`;
             }
-            carDatabase = await response.json();
-            findCars(); // Renders the cars once data is successfully fetched
-          } catch (error) {
-            console.error("Error loading cars.json:", error);
-            document.getElementById('carList').innerHTML = `
-              <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-10 text-center text-red-400">
-                <p class="text-base font-semibold mb-1">Failed to load car data.</p>
-                <p class="text-xs">Please ensure cars.json is uploaded in your repository root directory.</p>
-              </div>`;
-          }
         }
 
         function updateBudgetLabel(val) {
