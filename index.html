@@ -235,14 +235,19 @@
         }
 
         function updateBudgetLabel(val) {
-            document.getElementById('budgetValue').innerText = `₹ ${val} Lakhs`;
+            const numVal = parseFloat(val);
+            if (numVal >= 100) {
+                document.getElementById('budgetValue').innerText = `₹ 1 Crore+`;
+            } else {
+                document.getElementById('budgetValue').innerText = `₹ ${numVal} Lakhs`;
+            }
             findCars();
         }
 
         function resetForm() {
             document.getElementById('carForm').reset();
-            document.getElementById('budget').value = 25;
-            document.getElementById('budgetValue').innerText = '₹ 25 Lakhs';
+            document.getElementById('budget').value = 100;
+            document.getElementById('budgetValue').innerText = '₹ 1 Crore+';
             findCars();
         }
 
