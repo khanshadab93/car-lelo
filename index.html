@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarLelo - India Car Recommendation Engine</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -12,6 +13,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
 
+    <!-- Header -->
     <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -27,7 +29,10 @@
         </div>
     </header>
 
+    <!-- Main Container -->
     <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Requirement Filters -->
         <section class="lg:col-span-5 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl backdrop-blur-sm">
             <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-800">
                 <h2 class="text-lg font-bold text-slate-200 flex items-center gap-2">
@@ -38,6 +43,8 @@
             </div>
 
             <form id="carForm" onsubmit="event.preventDefault(); findCars();" class="space-y-6">
+                
+                <!-- Budget Slider -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-sm font-semibold text-slate-300">Max Budget</label>
@@ -51,6 +58,7 @@
                     </div>
                 </div>
 
+                <!-- Body Type -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Preferred Body Type</label>
                     <select id="bodyType" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
@@ -63,6 +71,7 @@
                     </select>
                 </div>
 
+                <!-- Fuel Type -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Fuel / Power Type</label>
                     <select id="fuelType" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
@@ -75,6 +84,7 @@
                     </select>
                 </div>
 
+                <!-- Transmission -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Transmission</label>
                     <select id="transmission" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
@@ -84,6 +94,7 @@
                     </select>
                 </div>
 
+                <!-- Seating Capacity -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Minimum Seating Capacity</label>
                     <select id="seating" onchange="findCars()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition">
@@ -93,6 +104,7 @@
                     </select>
                 </div>
 
+                <!-- Capability Filters -->
                 <div class="bg-indigo-950/30 border border-indigo-800/40 p-3.5 rounded-xl space-y-3">
                     <label class="flex items-start space-x-3 cursor-pointer">
                         <input type="checkbox" id="hillPerformance" onchange="findCars()" class="accent-indigo-500 rounded mt-0.5">
@@ -111,6 +123,7 @@
                     </label>
                 </div>
 
+                <!-- Features Checkboxes -->
                 <div>
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Must-Have Features</label>
                     <div class="grid grid-cols-2 gap-2 text-xs">
@@ -140,9 +153,11 @@
                         </label>
                     </div>
                 </div>
+
             </form>
         </section>
 
+        <!-- Right Column: Recommendation Results -->
         <section class="lg:col-span-7 flex flex-col space-y-4">
             <div class="flex justify-between items-center bg-slate-900/60 border border-slate-800 px-6 py-4 rounded-2xl backdrop-blur-sm">
                 <div id="resultsCount" class="text-sm font-semibold text-slate-300">Showing cars...</div>
@@ -157,13 +172,19 @@
                 </div>
             </div>
 
-            <div id="carList" class="space-y-4"></div>
+            <div id="carList" class="space-y-4">
+                <!-- Dynamically filled car cards -->
+            </div>
         </section>
+
     </main>
 
+    <!-- Footer & Disclaimers -->
     <footer class="border-t border-slate-800 py-8 mt-12 bg-slate-900/40 text-slate-400 text-xs w-full">
         <div class="max-w-7xl mx-auto px-4 space-y-4">
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Hill Driving Ratio Disclaimer -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-[11px] leading-relaxed text-slate-400">
                     <p class="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
                         <span>⛰️ Concept: Hill Driving Capability Ratio (e.g., Ratio: 1.25)</span>
@@ -173,6 +194,7 @@
                     </p>
                 </div>
 
+                <!-- Ownership Ease Index Disclaimer -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-[11px] leading-relaxed text-slate-400">
                     <p class="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
                         <span>🛠️ Concept: Ownership Ease Index ("Parts: High / Easy")</span>
@@ -189,8 +211,10 @@
         </div>
     </footer>
 
+    <!-- JavaScript Data and Logic -->
     <script>
         const carDatabase = [
+            // Compact & Mid Sedans
             { name: "Maruti Dzire", brand: "Maruti", price: 6.31, maxPrice: 9.54, body: "Sedan", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.7 kmpl", safety: "5-Star", cc: 1197, weight: 920, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Connected Tech", "Cruise Control"] },
             { name: "Honda Amaze", brand: "Honda", price: 7.65, maxPrice: 10.02, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.4 kmpl", safety: "5-Star", cc: 1199, weight: 950, parts: "High / Easy", features: ["ADAS", "Connected Tech", "Cruise Control"] },
             { name: "Hyundai Verna", brand: "Hyundai", price: 11.00, maxPrice: 17.42, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.6 kmpl", safety: "5-Star", cc: 1498, weight: 1180, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
@@ -198,6 +222,7 @@
             { name: "Honda City", brand: "Honda", price: 12.08, maxPrice: 16.35, body: "Sedan", fuel: ["Petrol", "Hybrid"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.4 kmpl", safety: "5-Star", cc: 1498, weight: 1150, parts: "High / Easy", features: ["Sunroof", "ADAS", "Connected Tech", "Cruise Control"] },
             { name: "Toyota Camry", brand: "Toyota", price: 46.17, maxPrice: 48.69, body: "Sedan", fuel: ["Hybrid", "Petrol"], transmission: ["Automatic"], seats: 5, mileage: "25.5 kmpl", safety: "5-Star", cc: 2487, weight: 1600, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
 
+            // Hatchbacks
             { name: "Maruti Alto K10", brand: "Maruti", price: 3.99, maxPrice: 5.96, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "24.3 kmpl", safety: "2-Star", cc: 998, weight: 745, parts: "High / Easy", features: [] },
             { name: "Maruti Wagon R", brand: "Maruti", price: 5.54, maxPrice: 7.35, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.1 kmpl", safety: "1-Star", cc: 1197, weight: 840, parts: "High / Easy", features: [] },
             { name: "Tata Tiago", brand: "Tata", price: 5.60, maxPrice: 8.90, body: "Hatchback", fuel: ["Petrol", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.0 kmpl", safety: "4-Star", cc: 1199, weight: 980, parts: "High / Easy", features: ["Connected Tech"] },
@@ -206,6 +231,7 @@
             { name: "Tata Altroz", brand: "Tata", price: 6.60, maxPrice: 10.80, body: "Hatchback", fuel: ["Petrol", "Diesel", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "23.6 kmpl", safety: "5-Star", cc: 1497, weight: 1150, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
             { name: "Maruti Baleno", brand: "Maruti", price: 6.66, maxPrice: 9.88, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "22.9 kmpl", safety: "3-Star", cc: 1197, weight: 955, parts: "High / Easy", features: ["360 Camera", "Connected Tech", "Cruise Control"] },
 
+            // Compact SUVs
             { name: "Tata Punch", brand: "Tata", price: 5.75, maxPrice: 10.77, body: "Compact SUV", fuel: ["Petrol", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.0 kmpl", safety: "5-Star", cc: 1199, weight: 1000, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
             { name: "Hyundai Exter", brand: "Hyundai", price: 6.13, maxPrice: 10.28, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.4 kmpl", safety: "3-Star", cc: 1197, weight: 990, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
             { name: "Skoda Kylaq", brand: "Skoda", price: 7.89, maxPrice: 14.40, body: "Compact SUV", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.5 kmpl", safety: "5-Star", cc: 999, weight: 1190, parts: "Moderate", features: ["Sunroof", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
@@ -215,6 +241,7 @@
             { name: "Mahindra XUV 3XO", brand: "Mahindra", price: 7.79, maxPrice: 15.04, body: "Compact SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.6 kmpl", safety: "5-Star", cc: 1497, weight: 1380, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
             { name: "Kia Sonet", brand: "Kia", price: 7.99, maxPrice: 15.77, body: "Compact SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.4 kmpl", safety: "3-Star", cc: 1493, weight: 1200, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
 
+            // Mid & Premium SUVs
             { name: "Honda Elevate", brand: "Honda", price: 11.80, maxPrice: 16.50, body: "SUV", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "16.9 kmpl", safety: "5-Star", cc: 1498, weight: 1215, parts: "High / Easy", features: ["Sunroof", "ADAS", "Connected Tech", "Cruise Control"] },
             { name: "Toyota Urban Cruiser Hyryder", brand: "Toyota", price: 11.14, maxPrice: 19.99, body: "SUV", fuel: ["Petrol", "Hybrid", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "27.9 kmpl", safety: "4-Star", cc: 1490, weight: 1295, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
             { name: "Maruti Grand Vitara", brand: "Maruti", price: 10.99, maxPrice: 19.93, body: "SUV", fuel: ["Petrol", "Hybrid", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "27.9 kmpl", safety: "4-Star", cc: 1490, weight: 1290, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
@@ -226,6 +253,7 @@
             { name: "Tata Safari", brand: "Tata", price: 16.19, maxPrice: 27.34, body: "SUV", fuel: ["Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "16.3 kmpl", safety: "5-Star", cc: 1956, weight: 1825, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
             { name: "Toyota Fortuner", brand: "Toyota", price: 35.11, maxPrice: 50.97, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "10.0 kmpl", safety: "5-Star", cc: 2755, weight: 2180, parts: "High / Easy", features: ["Cruise Control", "Connected Tech"] },
 
+            // MPVs / 7-Seaters
             { name: "Maruti Ertiga", brand: "Maruti", price: 8.69, maxPrice: 13.03, body: "MPV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "20.5 kmpl", safety: "3-Star", cc: 1462, weight: 1150, parts: "High / Easy", features: ["Connected Tech", "Cruise Control"] },
             { name: "Kia Carens", brand: "Kia", price: 10.52, maxPrice: 19.67, body: "MPV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "16.5 kmpl", safety: "3-Star", cc: 1497, weight: 1220, parts: "High / Easy", features: ["Sunroof", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
             { name: "Toyota Innova Hycross", brand: "Toyota", price: 19.77, maxPrice: 30.98, body: "MPV", fuel: ["Petrol", "Hybrid"], transmission: ["Automatic"], seats: 7, mileage: "23.2 kmpl", safety: "5-Star", cc: 1987, weight: 1580, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Tech", "Cruise Control"] }
@@ -250,7 +278,7 @@
             const transmission = document.getElementById('transmission').value;
             const minSeating = parseInt(document.getElementById('seating').value);
             const sortBy = document.getElementById('sortBy').value;
-
+            
             const hillElem = document.getElementById('hillPerformance');
             const partsElem = document.getElementById('easyParts');
             const requireHillPower = hillElem ? hillElem.checked : false;
@@ -318,42 +346,36 @@
             }
 
             container.innerHTML = cars.map(car => `
-                <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-5 hover:border-indigo-500/50 transition duration-300 flex flex-col sm:flex-row gap-5 shadow-lg backdrop-blur-sm">
-                    <div class="sm:w-48 h-36 bg-slate-800 rounded-xl flex-shrink-0 flex flex-col items-center justify-center border border-slate-700/60">
-                        <div class="bg-indigo-600/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg mb-2">
-                            ${car.matchPercentage}% Match
+                <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-5 hover:border-indigo-500/50 transition duration-300 shadow-lg backdrop-blur-sm">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-indigo-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                                ${car.matchPercentage}% Match
+                            </span>
+                            <div>
+                                <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">${car.brand}</span>
+                                <h3 class="text-lg font-bold text-slate-100 leading-none">${car.name}</h3>
+                            </div>
                         </div>
-                        <div class="text-center px-2">
-                            <div class="text-xs font-semibold text-indigo-300 uppercase tracking-wider">${car.brand}</div>
-                            <div class="text-sm font-bold text-slate-100">${car.name}</div>
+                        <div class="text-left sm:text-right">
+                            <div class="text-lg font-extrabold text-slate-100">₹ ${car.price} - ${car.maxPrice} L</div>
+                            <div class="text-[10px] text-slate-400">Ex-Showroom India</div>
                         </div>
                     </div>
-                    <div class="flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">${car.brand}</span>
-                                    <h3 class="text-lg font-bold text-slate-100">${car.name}</h3>
-                                </div>
-                                <div class="text-right">
-                                    <div class="text-lg font-extrabold text-slate-100">₹ ${car.price} - ${car.maxPrice} L</div>
-                                    <div class="text-[10px] text-slate-400">Ex-Showroom India</div>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2 mt-3 text-xs">
-                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.body}</span>
-                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.fuel.join(' / ')}</span>
-                                <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.transmission.join(' / ')}</span>
-                                <span class="bg-slate-800 text-cyan-400 px-2.5 py-1 rounded-lg border border-cyan-900/40">⛽ ${car.mileage}</span>
-                                <span class="bg-slate-800 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-900/40">🛡️ ${car.safety}</span>
-                                <span class="bg-indigo-950/80 text-indigo-300 px-2.5 py-1 rounded-lg border border-indigo-800/40">⛰️ Ratio: ${car.ratio}</span>
-                                <span class="bg-emerald-950/80 text-emerald-300 px-2.5 py-1 rounded-lg border border-emerald-800/40">🛠️ Parts: ${car.parts}</span>
-                            </div>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 items-center">
-                            <span class="text-[11px] text-slate-400 font-medium mr-1">Key Features:</span>
-                            ${car.features.length > 0 ? car.features.map(f => `<span class="text-[10px] bg-indigo-950/80 text-indigo-300 px-2 py-0.5 rounded border border-indigo-800/40">${f}</span>`).join('') : '<span class="text-[10px] text-slate-500">Standard features</span>'}
-                        </div>
+
+                    <div class="flex flex-wrap gap-2 text-xs my-3">
+                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.body}</span>
+                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.fuel.join(' / ')}</span>
+                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.transmission.join(' / ')}</span>
+                        <span class="bg-slate-800 text-cyan-400 px-2.5 py-1 rounded-lg border border-cyan-900/40">⛽ ${car.mileage}</span>
+                        <span class="bg-slate-800 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-900/40">🛡️ ${car.safety}</span>
+                        <span class="bg-indigo-950/80 text-indigo-300 px-2.5 py-1 rounded-lg border border-indigo-800/40">⛰️ Ratio: ${car.ratio}</span>
+                        <span class="bg-emerald-950/80 text-emerald-300 px-2.5 py-1 rounded-lg border border-emerald-800/40">🛠️ Parts: ${car.parts}</span>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 items-center">
+                        <span class="text-[11px] text-slate-400 font-medium mr-1">Key Features:</span>
+                        ${car.features.length > 0 ? car.features.map(f => `<span class="text-[10px] bg-indigo-950/80 text-indigo-300 px-2 py-0.5 rounded border border-indigo-800/40">${f}</span>`).join('') : '<span class="text-[10px] text-slate-500">Standard features</span>'}
                     </div>
                 </div>
             `).join('');
