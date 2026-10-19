@@ -213,51 +213,20 @@
 
     <!-- JavaScript Data and Logic -->
     <script>
-        const carDatabase = [
-            // Compact & Mid Sedans
-            { name: "Maruti Dzire", brand: "Maruti", price: 6.31, maxPrice: 9.54, body: "Sedan", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.7 kmpl", safety: "5-Star", cc: 1197, weight: 920, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Honda Amaze", brand: "Honda", price: 7.65, maxPrice: 10.02, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.4 kmpl", safety: "5-Star", cc: 1199, weight: 950, parts: "High / Easy", features: ["ADAS", "Connected Tech", "Cruise Control"] },
-            { name: "Hyundai Verna", brand: "Hyundai", price: 11.00, maxPrice: 17.42, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.6 kmpl", safety: "5-Star", cc: 1498, weight: 1180, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
-            { name: "Volkswagen Virtus", brand: "Volkswagen", price: 11.56, maxPrice: 19.41, body: "Sedan", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.6 kmpl", safety: "5-Star", cc: 1498, weight: 1260, parts: "Moderate", features: ["Sunroof", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
-            { name: "Honda City", brand: "Honda", price: 12.08, maxPrice: 16.35, body: "Sedan", fuel: ["Petrol", "Hybrid"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.4 kmpl", safety: "5-Star", cc: 1498, weight: 1150, parts: "High / Easy", features: ["Sunroof", "ADAS", "Connected Tech", "Cruise Control"] },
-            { name: "Toyota Camry", brand: "Toyota", price: 46.17, maxPrice: 48.69, body: "Sedan", fuel: ["Hybrid", "Petrol"], transmission: ["Automatic"], seats: 5, mileage: "25.5 kmpl", safety: "5-Star", cc: 2487, weight: 1600, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-
-            // Hatchbacks
-            { name: "Maruti Alto K10", brand: "Maruti", price: 3.99, maxPrice: 5.96, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "24.3 kmpl", safety: "2-Star", cc: 998, weight: 745, parts: "High / Easy", features: [] },
-            { name: "Maruti Wagon R", brand: "Maruti", price: 5.54, maxPrice: 7.35, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.1 kmpl", safety: "1-Star", cc: 1197, weight: 840, parts: "High / Easy", features: [] },
-            { name: "Tata Tiago", brand: "Tata", price: 5.60, maxPrice: 8.90, body: "Hatchback", fuel: ["Petrol", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.0 kmpl", safety: "4-Star", cc: 1199, weight: 980, parts: "High / Easy", features: ["Connected Tech"] },
-            { name: "Maruti Swift", brand: "Maruti", price: 5.84, maxPrice: 8.89, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "25.7 kmpl", safety: "3-Star", cc: 1197, weight: 920, parts: "High / Easy", features: ["Connected Tech", "Cruise Control"] },
-            { name: "Hyundai Grand i10 Nios", brand: "Hyundai", price: 5.92, maxPrice: 8.56, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.7 kmpl", safety: "2-Star", cc: 1197, weight: 930, parts: "High / Easy", features: ["Cruise Control"] },
-            { name: "Tata Altroz", brand: "Tata", price: 6.60, maxPrice: 10.80, body: "Hatchback", fuel: ["Petrol", "Diesel", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "23.6 kmpl", safety: "5-Star", cc: 1497, weight: 1150, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
-            { name: "Maruti Baleno", brand: "Maruti", price: 6.66, maxPrice: 9.88, body: "Hatchback", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "22.9 kmpl", safety: "3-Star", cc: 1197, weight: 955, parts: "High / Easy", features: ["360 Camera", "Connected Tech", "Cruise Control"] },
-
-            // Compact SUVs
-            { name: "Tata Punch", brand: "Tata", price: 5.75, maxPrice: 10.77, body: "Compact SUV", fuel: ["Petrol", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.0 kmpl", safety: "5-Star", cc: 1199, weight: 1000, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
-            { name: "Hyundai Exter", brand: "Hyundai", price: 6.13, maxPrice: 10.28, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "19.4 kmpl", safety: "3-Star", cc: 1197, weight: 990, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
-            { name: "Skoda Kylaq", brand: "Skoda", price: 7.89, maxPrice: 14.40, body: "Compact SUV", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.5 kmpl", safety: "5-Star", cc: 999, weight: 1190, parts: "Moderate", features: ["Sunroof", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
-            { name: "Maruti Fronx", brand: "Maruti", price: 6.90, maxPrice: 12.03, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "22.8 kmpl", safety: "3-Star", cc: 1197, weight: 970, parts: "High / Easy", features: ["360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Maruti Brezza", brand: "Maruti", price: 7.40, maxPrice: 13.71, body: "Compact SUV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "21.0 kmpl", safety: "4-Star", cc: 1462, weight: 1190, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Tata Nexon", brand: "Tata", price: 7.40, maxPrice: 14.52, body: "Compact SUV", fuel: ["Petrol", "Diesel", "CNG", "EV"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "24.0 kmpl", safety: "5-Star", cc: 1497, weight: 1305, parts: "High / Easy", features: ["Sunroof", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Mahindra XUV 3XO", brand: "Mahindra", price: 7.79, maxPrice: 15.04, body: "Compact SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "20.6 kmpl", safety: "5-Star", cc: 1497, weight: 1380, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Kia Sonet", brand: "Kia", price: 7.99, maxPrice: 15.77, body: "Compact SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.4 kmpl", safety: "3-Star", cc: 1493, weight: 1200, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-
-            // Mid & Premium SUVs
-            { name: "Honda Elevate", brand: "Honda", price: 11.80, maxPrice: 16.50, body: "SUV", fuel: ["Petrol"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "16.9 kmpl", safety: "5-Star", cc: 1498, weight: 1215, parts: "High / Easy", features: ["Sunroof", "ADAS", "Connected Tech", "Cruise Control"] },
-            { name: "Toyota Urban Cruiser Hyryder", brand: "Toyota", price: 11.14, maxPrice: 19.99, body: "SUV", fuel: ["Petrol", "Hybrid", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "27.9 kmpl", safety: "4-Star", cc: 1490, weight: 1295, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
-            { name: "Maruti Grand Vitara", brand: "Maruti", price: 10.99, maxPrice: 19.93, body: "SUV", fuel: ["Petrol", "Hybrid", "CNG"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "27.9 kmpl", safety: "4-Star", cc: 1490, weight: 1290, parts: "High / Easy", features: ["Sunroof", "360 Camera", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
-            { name: "Hyundai Creta", brand: "Hyundai", price: 10.99, maxPrice: 20.15, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "18.0 kmpl", safety: "3-Star", cc: 1497, weight: 1250, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Kia Seltos", brand: "Kia", price: 10.90, maxPrice: 20.35, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "17.0 kmpl", safety: "3-Star", cc: 1497, weight: 1270, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Mahindra Thar Roxx", brand: "Mahindra", price: 12.99, maxPrice: 22.49, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 5, mileage: "15.2 kmpl", safety: "5-Star", cc: 2184, weight: 1850, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Mahindra Scorpio-N", brand: "Mahindra", price: 13.69, maxPrice: 25.49, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "15.4 kmpl", safety: "5-Star", cc: 2184, weight: 2000, parts: "High / Easy", features: ["Sunroof", "Connected Tech", "Cruise Control"] },
-            { name: "Mahindra XUV700", brand: "Mahindra", price: 13.99, maxPrice: 26.54, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "15.0 kmpl", safety: "5-Star", cc: 2184, weight: 1960, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Tata Safari", brand: "Tata", price: 16.19, maxPrice: 27.34, body: "SUV", fuel: ["Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "16.3 kmpl", safety: "5-Star", cc: 1956, weight: 1825, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"] },
-            { name: "Toyota Fortuner", brand: "Toyota", price: 35.11, maxPrice: 50.97, body: "SUV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "10.0 kmpl", safety: "5-Star", cc: 2755, weight: 2180, parts: "High / Easy", features: ["Cruise Control", "Connected Tech"] },
-
-            // MPVs / 7-Seaters
-            { name: "Maruti Ertiga", brand: "Maruti", price: 8.69, maxPrice: 13.03, body: "MPV", fuel: ["Petrol", "CNG"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "20.5 kmpl", safety: "3-Star", cc: 1462, weight: 1150, parts: "High / Easy", features: ["Connected Tech", "Cruise Control"] },
-            { name: "Kia Carens", brand: "Kia", price: 10.52, maxPrice: 19.67, body: "MPV", fuel: ["Petrol", "Diesel"], transmission: ["Manual", "Automatic"], seats: 7, mileage: "16.5 kmpl", safety: "3-Star", cc: 1497, weight: 1220, parts: "High / Easy", features: ["Sunroof", "Ventilated Seats", "Connected Tech", "Cruise Control"] },
-            { name: "Toyota Innova Hycross", brand: "Toyota", price: 19.77, maxPrice: 30.98, body: "MPV", fuel: ["Petrol", "Hybrid"], transmission: ["Automatic"], seats: 7, mileage: "23.2 kmpl", safety: "5-Star", cc: 1987, weight: 1580, parts: "High / Easy", features: ["Sunroof", "ADAS", "Ventilated Seats", "Connected Tech", "Cruise Control"] }
-        ];
+        const carDatabase = [];
+        
+        async function loadCarData() {
+          try {
+            const response = await fetch('cars.json');
+            if (!response.ok) {
+              throw new Error('Failed to load car dataset');
+            }
+            carDatabase = await response.json();
+            findCars(); // Renders the cars once data is successfully fetched
+          } catch (error) {
+            console.error("Error loading cars.json:", error);
+          }
+        }
 
         function updateBudgetLabel(val) {
             document.getElementById('budgetValue').innerText = `₹ ${val} Lakhs`;
@@ -381,7 +350,7 @@
             `).join('');
         }
 
-        window.onload = findCars;
+        window.onload = loadCarData;
     </script>
 </body>
 </html>
