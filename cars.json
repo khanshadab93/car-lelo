@@ -6,657 +6,15 @@
     "price": 6.31,
     "maxPrice": 9.54,
     "body": "Sedan",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
+    "fuel": ["Petrol", "CNG"],
+    "transmission": ["Manual", "Automatic"],
     "seats": 5,
     "mileage": "25.7 kmpl",
     "safety": "5-Star",
     "cc": 1197,
     "weight": 920,
     "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "honda-amaze",
-    "name": "Honda Amaze",
-    "brand": "Honda",
-    "price": 7.65,
-    "maxPrice": 10.02,
-    "body": "Sedan",
-    "fuel": [
-      "Petrol"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "19.4 kmpl",
-    "safety": "5-Star",
-    "cc": 1199,
-    "weight": 950,
-    "parts": "High / Easy",
-    "features": [
-      "ADAS",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "hyundai-verna",
-    "name": "Hyundai Verna",
-    "brand": "Hyundai",
-    "price": 11.0,
-    "maxPrice": 17.42,
-    "body": "Sedan",
-    "fuel": [
-      "Petrol"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "20.6 kmpl",
-    "safety": "5-Star",
-    "cc": 1498,
-    "weight": 1180,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "volkswagen-virtus",
-    "name": "Volkswagen Virtus",
-    "brand": "Volkswagen",
-    "price": 11.56,
-    "maxPrice": 19.41,
-    "body": "Sedan",
-    "fuel": [
-      "Petrol"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "19.6 kmpl",
-    "safety": "5-Star",
-    "cc": 1498,
-    "weight": 1260,
-    "parts": "Moderate",
-    "features": [
-      "Sunroof",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "honda-city",
-    "name": "Honda City",
-    "brand": "Honda",
-    "price": 12.08,
-    "maxPrice": 16.35,
-    "body": "Sedan",
-    "fuel": [
-      "Petrol",
-      "Hybrid"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "18.4 kmpl",
-    "safety": "5-Star",
-    "cc": 1498,
-    "weight": 1150,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "toyota-camry",
-    "name": "Toyota Camry",
-    "brand": "Toyota",
-    "price": 46.17,
-    "maxPrice": 48.69,
-    "body": "Sedan",
-    "fuel": [
-      "Hybrid",
-      "Petrol"
-    ],
-    "transmission": [
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "25.5 kmpl",
-    "safety": "5-Star",
-    "cc": 2487,
-    "weight": 1600,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "maruti-alto-k10",
-    "name": "Maruti Alto K10",
-    "brand": "Maruti",
-    "price": 3.99,
-    "maxPrice": 5.96,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "24.3 kmpl",
-    "safety": "2-Star",
-    "cc": 998,
-    "weight": 745,
-    "parts": "High / Easy",
-    "features": []
-  },
-  {
-    "id": "maruti-wagon-r",
-    "name": "Maruti Wagon R",
-    "brand": "Maruti",
-    "price": 5.54,
-    "maxPrice": 7.35,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "25.1 kmpl",
-    "safety": "1-Star",
-    "cc": 1197,
-    "weight": 840,
-    "parts": "High / Easy",
-    "features": []
-  },
-  {
-    "id": "tata-tiago",
-    "name": "Tata Tiago",
-    "brand": "Tata",
-    "price": 5.6,
-    "maxPrice": 8.9,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "CNG",
-      "EV"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "20.0 kmpl",
-    "safety": "4-Star",
-    "cc": 1199,
-    "weight": 980,
-    "parts": "High / Easy",
-    "features": [
-      "Connected Tech"
-    ]
-  },
-  {
-    "id": "maruti-swift",
-    "name": "Maruti Swift",
-    "brand": "Maruti",
-    "price": 5.84,
-    "maxPrice": 8.89,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "25.7 kmpl",
-    "safety": "3-Star",
-    "cc": 1197,
-    "weight": 920,
-    "parts": "High / Easy",
-    "features": [
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "hyundai-grand-i10-nios",
-    "name": "Hyundai Grand i10 Nios",
-    "brand": "Hyundai",
-    "price": 5.92,
-    "maxPrice": 8.56,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "20.7 kmpl",
-    "safety": "2-Star",
-    "cc": 1197,
-    "weight": 930,
-    "parts": "High / Easy",
-    "features": [
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "tata-altroz",
-    "name": "Tata Altroz",
-    "brand": "Tata",
-    "price": 6.6,
-    "maxPrice": 10.8,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "Diesel",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "23.6 kmpl",
-    "safety": "5-Star",
-    "cc": 1497,
-    "weight": 1150,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "maruti-baleno",
-    "name": "Maruti Baleno",
-    "brand": "Maruti",
-    "price": 6.66,
-    "maxPrice": 9.88,
-    "body": "Hatchback",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "22.9 kmpl",
-    "safety": "3-Star",
-    "cc": 1197,
-    "weight": 955,
-    "parts": "High / Easy",
-    "features": [
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "tata-punch",
-    "name": "Tata Punch",
-    "brand": "Tata",
-    "price": 5.75,
-    "maxPrice": 10.77,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "CNG",
-      "EV"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "20.0 kmpl",
-    "safety": "5-Star",
-    "cc": 1199,
-    "weight": 1000,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "hyundai-exter",
-    "name": "Hyundai Exter",
-    "brand": "Hyundai",
-    "price": 6.13,
-    "maxPrice": 10.28,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "19.4 kmpl",
-    "safety": "3-Star",
-    "cc": 1197,
-    "weight": 990,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "skoda-kylaq",
-    "name": "Skoda Kylaq",
-    "brand": "Skoda",
-    "price": 7.89,
-    "maxPrice": 14.4,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "18.5 kmpl",
-    "safety": "5-Star",
-    "cc": 999,
-    "weight": 1190,
-    "parts": "Moderate",
-    "features": [
-      "Sunroof",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "maruti-fronx",
-    "name": "Maruti Fronx",
-    "brand": "Maruti",
-    "price": 6.9,
-    "maxPrice": 12.03,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "22.8 kmpl",
-    "safety": "3-Star",
-    "cc": 1197,
-    "weight": 970,
-    "parts": "High / Easy",
-    "features": [
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "maruti-brezza",
-    "name": "Maruti Brezza",
-    "brand": "Maruti",
-    "price": 7.4,
-    "maxPrice": 13.71,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "21.0 kmpl",
-    "safety": "4-Star",
-    "cc": 1462,
-    "weight": 1190,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "tata-nexon",
-    "name": "Tata Nexon",
-    "brand": "Tata",
-    "price": 7.4,
-    "maxPrice": 14.52,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel",
-      "CNG",
-      "EV"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "24.0 kmpl",
-    "safety": "5-Star",
-    "cc": 1497,
-    "weight": 1305,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "mahindra-xuv-3xo",
-    "name": "Mahindra XUV 3XO",
-    "brand": "Mahindra",
-    "price": 7.79,
-    "maxPrice": 15.04,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "20.6 kmpl",
-    "safety": "5-Star",
-    "cc": 1497,
-    "weight": 1380,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "kia-sonet",
-    "name": "Kia Sonet",
-    "brand": "Kia",
-    "price": 7.99,
-    "maxPrice": 15.77,
-    "body": "Compact SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "18.4 kmpl",
-    "safety": "3-Star",
-    "cc": 1493,
-    "weight": 1200,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "honda-elevate",
-    "name": "Honda Elevate",
-    "brand": "Honda",
-    "price": 11.8,
-    "maxPrice": 16.5,
-    "body": "SUV",
-    "fuel": [
-      "Petrol"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "16.9 kmpl",
-    "safety": "5-Star",
-    "cc": 1498,
-    "weight": 1215,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "toyota-hyryder",
-    "name": "Toyota Urban Cruiser Hyryder",
-    "brand": "Toyota",
-    "price": 11.14,
-    "maxPrice": 19.99,
-    "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Hybrid",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "27.9 kmpl",
-    "safety": "4-Star",
-    "cc": 1490,
-    "weight": 1295,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "360 Camera",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "maruti-grand-vitara",
-    "name": "Maruti Grand Vitara",
-    "brand": "Maruti",
-    "price": 10.99,
-    "maxPrice": 19.93,
-    "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Hybrid",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "27.9 kmpl",
-    "safety": "4-Star",
-    "cc": 1490,
-    "weight": 1290,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "360 Camera",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
+    "features": ["Sunroof", "360 Camera", "Connected Tech", "Cruise Control"]
   },
   {
     "id": "hyundai-creta",
@@ -665,88 +23,15 @@
     "price": 10.99,
     "maxPrice": 20.15,
     "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
+    "fuel": ["Petrol", "Diesel"],
+    "transmission": ["Manual", "Automatic"],
     "seats": 5,
     "mileage": "18.0 kmpl",
     "safety": "3-Star",
     "cc": 1497,
     "weight": 1250,
     "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "kia-seltos",
-    "name": "Kia Seltos",
-    "brand": "Kia",
-    "price": 10.9,
-    "maxPrice": 20.35,
-    "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "17.0 kmpl",
-    "safety": "3-Star",
-    "cc": 1497,
-    "weight": 1270,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "mahindra-thar-roxx",
-    "name": "Mahindra Thar Roxx",
-    "brand": "Mahindra",
-    "price": 12.99,
-    "maxPrice": 22.49,
-    "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 5,
-    "mileage": "15.2 kmpl",
-    "safety": "5-Star",
-    "cc": 2184,
-    "weight": 1850,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
+    "features": ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"]
   },
   {
     "id": "mahindra-scorpio-n",
@@ -755,84 +40,15 @@
     "price": 13.69,
     "maxPrice": 25.49,
     "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
+    "fuel": ["Petrol", "Diesel"],
+    "transmission": ["Manual", "Automatic"],
     "seats": 7,
     "mileage": "15.4 kmpl",
     "safety": "5-Star",
     "cc": 2184,
     "weight": 2000,
     "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "mahindra-xuv700",
-    "name": "Mahindra XUV700",
-    "brand": "Mahindra",
-    "price": 13.99,
-    "maxPrice": 26.54,
-    "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 7,
-    "mileage": "15.0 kmpl",
-    "safety": "5-Star",
-    "cc": 2184,
-    "weight": 1960,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "tata-safari",
-    "name": "Tata Safari",
-    "brand": "Tata",
-    "price": 16.19,
-    "maxPrice": 27.34,
-    "body": "SUV",
-    "fuel": [
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 7,
-    "mileage": "16.3 kmpl",
-    "safety": "5-Star",
-    "cc": 1956,
-    "weight": 1825,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "360 Camera",
-      "Connected Tech",
-      "Cruise Control"
-    ]
+    "features": ["Sunroof", "Connected Tech", "Cruise Control"]
   },
   {
     "id": "toyota-fortuner",
@@ -841,105 +57,116 @@
     "price": 35.11,
     "maxPrice": 50.97,
     "body": "SUV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
+    "fuel": ["Petrol", "Diesel"],
+    "transmission": ["Manual", "Automatic"],
     "seats": 7,
     "mileage": "10.0 kmpl",
     "safety": "5-Star",
     "cc": 2755,
     "weight": 2180,
     "parts": "High / Easy",
-    "features": [
-      "Cruise Control",
-      "Connected Tech"
-    ]
+    "features": ["Cruise Control", "Connected Tech"]
   },
   {
-    "id": "maruti-ertiga",
-    "name": "Maruti Ertiga",
-    "brand": "Maruti",
-    "price": 8.69,
-    "maxPrice": 13.03,
-    "body": "MPV",
-    "fuel": [
-      "Petrol",
-      "CNG"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 7,
-    "mileage": "20.5 kmpl",
-    "safety": "3-Star",
-    "cc": 1462,
-    "weight": 1150,
-    "parts": "High / Easy",
-    "features": [
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "kia-carens",
-    "name": "Kia Carens",
-    "brand": "Kia",
-    "price": 10.52,
-    "maxPrice": 19.67,
-    "body": "MPV",
-    "fuel": [
-      "Petrol",
-      "Diesel"
-    ],
-    "transmission": [
-      "Manual",
-      "Automatic"
-    ],
-    "seats": 7,
-    "mileage": "16.5 kmpl",
-    "safety": "3-Star",
-    "cc": 1497,
-    "weight": 1220,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
-  },
-  {
-    "id": "toyota-innova-hycross",
-    "name": "Toyota Innova Hycross",
-    "brand": "Toyota",
-    "price": 19.77,
-    "maxPrice": 30.98,
-    "body": "MPV",
-    "fuel": [
-      "Petrol",
-      "Hybrid"
-    ],
-    "transmission": [
-      "Automatic"
-    ],
-    "seats": 7,
-    "mileage": "23.2 kmpl",
+    "id": "bmw-3-series",
+    "name": "BMW 3 Series Gran Limousine",
+    "brand": "BMW",
+    "price": 60.60,
+    "maxPrice": 62.90,
+    "body": "Sedan",
+    "fuel": ["Petrol", "Diesel"],
+    "transmission": ["Automatic"],
+    "seats": 5,
+    "mileage": "15.39 kmpl",
     "safety": "5-Star",
-    "cc": 1987,
-    "weight": 1580,
-    "parts": "High / Easy",
-    "features": [
-      "Sunroof",
-      "ADAS",
-      "Ventilated Seats",
-      "Connected Tech",
-      "Cruise Control"
-    ]
+    "cc": 1998,
+    "weight": 1745,
+    "parts": "Moderate",
+    "features": ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"]
+  },
+  {
+    "id": "mercedes-benz-c-class",
+    "name": "Mercedes-Benz C-Class",
+    "brand": "Mercedes-Benz",
+    "price": 61.85,
+    "maxPrice": 69.00,
+    "body": "Sedan",
+    "fuel": ["Petrol", "Diesel"],
+    "transmission": ["Automatic"],
+    "seats": 5,
+    "mileage": "23.0 kmpl",
+    "safety": "5-Star",
+    "cc": 1993,
+    "weight": 1650,
+    "parts": "Moderate",
+    "features": ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"]
+  },
+  {
+    "id": "audi-q3",
+    "name": "Audi Q3",
+    "brand": "Audi",
+    "price": 43.81,
+    "maxPrice": 52.65,
+    "body": "SUV",
+    "fuel": ["Petrol"],
+    "transmission": ["Automatic"],
+    "seats": 5,
+    "mileage": "14.93 kmpl",
+    "safety": "5-Star",
+    "cc": 1984,
+    "weight": 1695,
+    "parts": "Moderate",
+    "features": ["Sunroof", "Connected Tech", "360 Camera", "Cruise Control"]
+  },
+  {
+    "id": "land-rover-defender",
+    "name": "Land Rover Defender",
+    "brand": "Land Rover",
+    "price": 104.00,
+    "maxPrice": 157.00,
+    "body": "SUV",
+    "fuel": ["Petrol", "Diesel"],
+    "transmission": ["Automatic"],
+    "seats": 7,
+    "mileage": "11.0 kmpl",
+    "safety": "5-Star",
+    "cc": 2996,
+    "weight": 2330,
+    "parts": "Low / Imported",
+    "features": ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"]
+  },
+  {
+    "id": "porsche-cayenne",
+    "name": "Porsche Cayenne",
+    "brand": "Porsche",
+    "price": 136.00,
+    "maxPrice": 200.00,
+    "body": "SUV",
+    "fuel": ["Petrol", "Hybrid"],
+    "transmission": ["Automatic"],
+    "seats": 5,
+    "mileage": "10.8 kmpl",
+    "safety": "5-Star",
+    "cc": 2995,
+    "weight": 2085,
+    "parts": "Low / Imported",
+    "features": ["Sunroof", "ADAS", "Ventilated Seats", "360 Camera", "Connected Tech", "Cruise Control"]
+  },
+  {
+    "id": "jeep-wrangler",
+    "name": "Jeep Wrangler",
+    "brand": "Jeep",
+    "price": 67.65,
+    "maxPrice": 71.65,
+    "body": "SUV",
+    "fuel": ["Petrol"],
+    "transmission": ["Automatic"],
+    "seats": 5,
+    "mileage": "11.4 kmpl",
+    "safety": "4-Star",
+    "cc": 1998,
+    "weight": 1900,
+    "parts": "Moderate",
+    "features": ["Connected Tech", "Cruise Control"]
   }
 ]
