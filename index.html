@@ -39,7 +39,7 @@
                     <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
                     Your Requirements
                 </h2>
-                <button onclick="resetForm()" class="text-xs text-slate-400 hover:text-indigo-400 transition">Reset All</button>
+                <button type="button" onclick="resetForm()" class="text-xs text-slate-400 hover:text-indigo-400 transition">Reset All</button>
             </div>
 
             <form id="carForm" onsubmit="event.preventDefault(); findCars();" class="space-y-6">
@@ -48,9 +48,8 @@
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-sm font-semibold text-slate-300">Max Budget</label>
-                        <span id="budgetValue" class="text-indigo-400 font-bold text-sm bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-800/50">₹ 25 Lakhs</span>
+                        <span id="budgetValue" class="text-indigo-400 font-bold text-sm bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-800/50">₹ 1 Crore+</span>
                     </div>
-                    <!-- Budget Slider (Max 100 Lakhs / 1 Crore, step 1) -->
                     <input type="range" id="budget" min="3" max="100" step="1" value="100" oninput="updateBudgetLabel(this.value)" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500">
                     <div class="flex justify-between text-[10px] text-slate-500 mt-1">
                         <span>₹3 Lakhs</span>
@@ -108,7 +107,7 @@
                 <!-- Capability Filters -->
                 <div class="bg-indigo-950/30 border border-indigo-800/40 p-3.5 rounded-xl space-y-3">
                     <label class="flex items-start space-x-3 cursor-pointer">
-                        <input type="checkbox" id="hillPerformance" onchange="findCars()" class="accent-indigo-500 rounded mt-0.5">
+                        <input type="checkbox" id="hillCapability" onchange="findCars()" class="accent-indigo-500 rounded mt-0.5">
                         <div>
                             <span class="text-sm font-semibold text-slate-200 block">⛰️ High Hill Driving Capability</span>
                             <span class="text-[11px] text-slate-400 leading-tight block mt-0.5">CC/Weight Ratio > 1.2 for effortless mountain climbs.</span>
@@ -129,27 +128,27 @@
                     <label class="block text-sm font-semibold text-slate-300 mb-2">Must-Have Features</label>
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Sunroof" onchange="findCars()" class="accent-indigo-500 rounded">
+                            <input type="checkbox" id="featSunroof" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Sunroof</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="ADAS" onchange="findCars()" class="accent-indigo-500 rounded">
+                            <input type="checkbox" id="featAdas" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">ADAS Safety</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Ventilated Seats" onchange="findCars()" class="accent-indigo-500 rounded">
+                            <input type="checkbox" id="featVentilated" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Ventilated Seats</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="360 Camera" onchange="findCars()" class="accent-indigo-500 rounded">
+                            <input type="checkbox" id="feat360" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">360° Camera</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Connected Tech" onchange="findCars()" class="accent-indigo-500 rounded">
+                            <input type="checkbox" id="featConnected" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Connected Tech</span>
                         </label>
                         <label class="flex items-center space-x-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer hover:border-indigo-500/50 transition">
-                            <input type="checkbox" name="feature" value="Cruise Control" onchange="findCars()" class="accent-indigo-500 rounded">
+                            <input type="checkbox" id="featCruise" onchange="findCars()" class="accent-indigo-500 rounded">
                             <span class="text-slate-300">Cruise Control</span>
                         </label>
                     </div>
@@ -185,23 +184,21 @@
         <div class="max-w-7xl mx-auto px-4 space-y-4">
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Hill Driving Ratio Disclaimer -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-[11px] leading-relaxed text-slate-400">
                     <p class="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
-                        <span>⛰️ Concept: Hill Driving Capability Ratio (e.g., Ratio: 1.25)</span>
+                        <span>⛰️ Concept: Hill Driving Capability Ratio</span>
                     </p>
                     <p>
-                        The <span class="text-indigo-400 font-semibold">Ratio: CC / Weight</span> calculates engine displacement in cc divided by the car's kerb weight in kg. A score <span class="text-slate-200 font-semibold">above 1.20</span> indicates strong power-to-weight proportion, ensuring the car maintains responsive low-end pull and climbs steep mountain gradients effortlessly without feeling strained or sluggish under load.
+                        The <span class="text-indigo-400 font-semibold">Ratio: CC / Weight</span> calculates engine displacement in cc divided by the car's kerb weight in kg. A score <span class="text-slate-200 font-semibold">above 1.20</span> indicates strong power-to-weight proportion.
                     </p>
                 </div>
 
-                <!-- Ownership Ease Index Disclaimer -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-[11px] leading-relaxed text-slate-400">
                     <p class="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
-                        <span>🛠️ Concept: Ownership Ease Index ("Parts: High / Easy")</span>
+                        <span>🛠️ Concept: Ownership Ease Index</span>
                     </p>
                     <p>
-                        The <span class="text-emerald-400 font-semibold">"Parts: High / Easy"</span> tag represents CarLelo's <span class="text-slate-200 font-semibold">Ownership Ease Index</span>. It evaluates long-term maintenance convenience over a 5–10+ year span based on national service center network density, off-the-shelf spare parts availability, repair flexibility at independent garages, and low maintenance overhead.
+                        The <span class="text-emerald-400 font-semibold">"Parts: High / Easy"</span> tag evaluates long-term maintenance convenience over a 5–10+ year span.
                     </p>
                 </div>
             </div>
@@ -218,21 +215,19 @@
         
         async function loadCarData() {
             try {
-                // Dynamic path resolution for GitHub Pages subpaths
                 const basePath = window.location.hostname.includes('github.io') 
                     ? window.location.pathname.replace(/\/[^\/]*$/, '/') 
                     : './';
                 
                 let response = await fetch(basePath + 'cars.json');
                 if (!response.ok) {
-                    // Fallback to absolute root fetch if subpath fails
                     response = await fetch('/cars.json');
                 }
                 if (!response.ok) {
                     throw new Error('Failed to load car dataset');
                 }
                 carDatabase = await response.json();
-                findCars(); // Renders the cars once data is successfully fetched
+                findCars();
             } catch (error) {
                 console.error("Error loading cars.json:", error);
                 document.getElementById('carList').innerHTML = `
@@ -264,7 +259,6 @@
             if (!carDatabase || carDatabase.length === 0) return;
 
             const sliderVal = parseFloat(document.getElementById('budget').value);
-            // Agar slider max (100) par hai, toh sabhi luxury/supercars (1 Crore+) allow karo
             const maxBudget = sliderVal >= 100 ? 99999.0 : sliderVal;
 
             const bodyType = document.getElementById('bodyType').value;
@@ -275,7 +269,6 @@
             const hillCapability = document.getElementById('hillCapability').checked;
             const easyParts = document.getElementById('easyParts').checked;
 
-            // Must-have features
             const features = {
                 sunroof: document.getElementById('featSunroof').checked,
                 adas: document.getElementById('featAdas').checked,
@@ -286,33 +279,21 @@
             };
 
             let filtered = carDatabase.filter(car => {
-                // Budget Check (Car ki starting price ya max price budget ke andar honi chahiye)
                 if (car.price > maxBudget) return false;
-
-                // Body Type Check
-                if (bodyType && car.body !== bodyType) return false;
-
-                // Fuel Type Check
-                if (fuelType && !car.fuel.includes(fuelType)) return false;
-
-                // Transmission Check
-                if (transmission && !car.transmission.includes(transmission)) return false;
-
-                // Seating Check
+                if (bodyType !== 'All' && car.body !== bodyType) return false;
+                if (fuelType !== 'All' && !car.fuel.includes(fuelType)) return false;
+                if (transmission !== 'All' && !car.transmission.includes(transmission)) return false;
                 if (minSeating && car.seats < minSeating) return false;
 
-                // Hill Capability Check (CC / Weight ratio logic)
                 if (hillCapability) {
                     let ratio = car.weight > 0 ? (car.cc / car.weight) : 0;
                     if (ratio < 1.2) return false;
                 }
 
-                // Easy Parts Check
                 if (easyParts) {
                     if (car.parts !== 'High / Easy') return false;
                 }
 
-                // Features Check
                 if (features.sunroof && !car.features.includes('Sunroof')) return false;
                 if (features.adas && !car.features.includes('ADAS')) return false;
                 if (features.ventilated && !car.features.includes('Ventilated Seats')) return false;
@@ -323,8 +304,19 @@
                 return true;
             });
 
-            // Render cars count & list cards...
-            renderCarResults(filtered);
+            // Sorting logic
+            const sortBy = document.getElementById('sortBy').value;
+            if (sortBy === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortBy === 'mileage') {
+                filtered.sort((a, b) => parseFloat(b.mileage) - parseFloat(a.mileage));
+            } else {
+                filtered.sort((a, b) => (b.matchPercentage || 0) - (a.matchPercentage || 0));
+            }
+
+            renderCars(filtered);
         }
 
         function renderCars(cars) {
@@ -345,7 +337,7 @@
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
                         <div class="flex items-center space-x-3">
                             <span class="bg-indigo-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
-                                ${car.matchPercentage}% Match
+                                ${car.matchPercentage || 95}% Match
                             </span>
                             <div>
                                 <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">${car.brand}</span>
@@ -360,8 +352,8 @@
 
                     <div class="flex flex-wrap gap-2 text-xs my-3">
                         <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.body}</span>
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.fuel.join(' / ')}</span>
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${car.transmission.join(' / ')}</span>
+                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${Array.isArray(car.fuel) ? car.fuel.join(' / ') : car.fuel}</span>
+                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${Array.isArray(car.transmission) ? car.transmission.join(' / ') : car.transmission}</span>
                         <span class="bg-slate-800 text-cyan-400 px-2.5 py-1 rounded-lg border border-cyan-900/40">⛽ ${car.mileage}</span>
                         <span class="bg-slate-800 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-900/40">🛡️ ${car.safety}</span>
                         <span class="bg-indigo-950/80 text-indigo-300 px-2.5 py-1 rounded-lg border border-indigo-800/40">⛰️ Ratio: ${car.ratio}</span>
@@ -370,7 +362,7 @@
 
                     <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 items-center">
                         <span class="text-[11px] text-slate-400 font-medium mr-1">Key Features:</span>
-                        ${car.features.length > 0 ? car.features.map(f => `<span class="text-[10px] bg-indigo-950/80 text-indigo-300 px-2 py-0.5 rounded border border-indigo-800/40">${f}</span>`).join('') : '<span class="text-[10px] text-slate-500">Standard features</span>'}
+                        ${car.features && car.features.length > 0 ? car.features.map(f => `<span class="text-[10px] bg-indigo-950/80 text-indigo-300 px-2 py-0.5 rounded border border-indigo-800/40">${f}</span>`).join('') : '<span class="text-[10px] text-slate-500">Standard features</span>'}
                     </div>
                 </div>
             `).join('');
