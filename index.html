@@ -107,14 +107,6 @@
                 <!-- Capability Filters -->
                 <div class="bg-indigo-950/30 border border-indigo-800/40 p-3.5 rounded-xl space-y-3">
                     <label class="flex items-start space-x-3 cursor-pointer">
-                        <input type="checkbox" id="hillCapability" onchange="findCars()" class="accent-indigo-500 rounded mt-0.5">
-                        <div>
-                            <span class="text-sm font-semibold text-slate-200 block">⛰️ High Hill Driving Capability</span>
-                            <span class="text-[11px] text-slate-400 leading-tight block mt-0.5">CC/Weight Ratio > 1.2 for effortless mountain climbs.</span>
-                        </div>
-                    </label>
-
-                    <label class="flex items-start space-x-3 cursor-pointer pt-2 border-t border-indigo-900/50">
                         <input type="checkbox" id="easyParts" onchange="findCars()" class="accent-indigo-500 rounded mt-0.5">
                         <div>
                             <span class="text-sm font-semibold text-slate-200 block">🛠️ High & Easy Parts Availability</span>
@@ -183,22 +175,14 @@
     <footer class="border-t border-slate-800 py-8 mt-12 bg-slate-900/40 text-slate-400 text-xs w-full">
         <div class="max-w-7xl mx-auto px-4 space-y-4">
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 max-w-xl mx-auto">
+                <!-- Ownership Ease Index Disclaimer -->
                 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-[11px] leading-relaxed text-slate-400">
                     <p class="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
-                        <span>⛰️ Concept: Hill Driving Capability Ratio</span>
+                        <span>🛠️ Concept: Ownership Ease Index ("Parts: High / Easy")</span>
                     </p>
                     <p>
-                        The <span class="text-indigo-400 font-semibold">Ratio: CC / Weight</span> calculates engine displacement in cc divided by the car's kerb weight in kg. A score <span class="text-slate-200 font-semibold">above 1.20</span> indicates strong power-to-weight proportion.
-                    </p>
-                </div>
-
-                <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-[11px] leading-relaxed text-slate-400">
-                    <p class="font-bold text-slate-300 mb-1 flex items-center gap-1.5">
-                        <span>🛠️ Concept: Ownership Ease Index</span>
-                    </p>
-                    <p>
-                        The <span class="text-emerald-400 font-semibold">"Parts: High / Easy"</span> tag evaluates long-term maintenance convenience over a 5–10+ year span.
+                        The <span class="text-emerald-400 font-semibold">"Parts: High / Easy"</span> tag represents CarLelo's <span class="text-slate-200 font-semibold">Ownership Ease Index</span>. It evaluates long-term maintenance convenience over a 5–10+ year span based on national service center network density, off-the-shelf spare parts availability, repair flexibility at independent garages, and low maintenance overhead.
                     </p>
                 </div>
             </div>
@@ -266,7 +250,6 @@
             const transmission = document.getElementById('transmission').value;
             const minSeating = parseInt(document.getElementById('seating').value) || 0;
 
-            const hillCapability = document.getElementById('hillCapability').checked;
             const easyParts = document.getElementById('easyParts').checked;
 
             const features = {
@@ -284,11 +267,6 @@
                 if (fuelType !== 'All' && !car.fuel.includes(fuelType)) return false;
                 if (transmission !== 'All' && !car.transmission.includes(transmission)) return false;
                 if (minSeating && car.seats < minSeating) return false;
-
-                if (hillCapability) {
-                    let ratio = car.weight > 0 ? (car.cc / car.weight) : 0;
-                    if (ratio < 1.2) return false;
-                }
 
                 if (easyParts) {
                     if (car.parts !== 'High / Easy') return false;
@@ -356,7 +334,6 @@
                         <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg border border-slate-700/60">${Array.isArray(car.transmission) ? car.transmission.join(' / ') : car.transmission}</span>
                         <span class="bg-slate-800 text-cyan-400 px-2.5 py-1 rounded-lg border border-cyan-900/40">⛽ ${car.mileage}</span>
                         <span class="bg-slate-800 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-900/40">🛡️ ${car.safety}</span>
-                        <span class="bg-indigo-950/80 text-indigo-300 px-2.5 py-1 rounded-lg border border-indigo-800/40">⛰️ Ratio: ${car.ratio}</span>
                         <span class="bg-emerald-950/80 text-emerald-300 px-2.5 py-1 rounded-lg border border-emerald-800/40">🛠️ Parts: ${car.parts}</span>
                     </div>
 
